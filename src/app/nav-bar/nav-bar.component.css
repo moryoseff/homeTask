@@ -1,0 +1,14 @@
+.roro {
+  padding: 5px
+}
+
+.navbar.navbar-light {
+  background-color: #990011FF;
+}
+
+.btn {
+  background-color: rgb(56, 53, 53);
+  color: white;
+  border-radius: 15px;
+  width: 100px;
+}

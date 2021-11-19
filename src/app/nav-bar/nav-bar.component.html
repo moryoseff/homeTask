@@ -1,0 +1,25 @@
+<div class="roro">
+    <div class="navbar navbar-light" role="banner">
+        <a href=""> <img width="100" src="../../assets/legoLogo.png" /></a>
+        <div class="spacer"></div>
+        <div class="container float-md-left" *ngIf="auth.isLoading$ | async; else loaded">
+        </div>
+        <ng-template #loaded>
+            <ul class="nav">
+                <li class="nav-item" role="presentation" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="/getData">
+                        <button class="btn"> Get Data</button>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation" routerLinkActive="active">
+                    <a class="nav-link" routerLink="">
+                        <button class="btn">Home</button>
+                    </a>
+                </li>
+            </ul>
+            <app-login-button *ngIf="(auth.isAuthenticated$ | async) === false"></app-login-button>
+            <app-logout-button *ngIf="(auth.isAuthenticated$ | async)"></app-logout-button>
+        </ng-template>
+    </div>
+</div>

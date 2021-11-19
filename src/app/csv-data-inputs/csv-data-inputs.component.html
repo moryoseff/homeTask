@@ -1,0 +1,66 @@
+<div class="cvsMainDiv">
+    <div class="row mt-5">
+        <div class="">
+            <p *ngIf="loadedData.length < 1">No data available</p>
+        </div>
+        <div class="selectorDiv">
+            <div class="">
+                <select (change)="onChange($event)" class="form-select" aria-label="Default select example">
+                    <hr>
+                    <option value="">Choose filter</option>
+                    <option value="Date">Date</option>
+                    <option value="WebsiteID">WebsiteID</option>
+                    <option value="WidgetID">WidgetID</option>
+                </select>
+
+                <div class="input-group">
+                    <div class="input-group-prepend" *ngIf=" selectedValue==='WebsiteID' || selectedValue==='WidgetID'">
+                        <span class="input-group-text span" id="inputGroup-sizing-default">Please enter the
+                            {{selectedValue}} value</span>
+                        <input class="form-control" id="generalInput" type="string" [(ngModel)]="filterBy"
+                            aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+
+                    <div *ngIf="selectedValue === 'Date'">
+                        <p class="p-3 mb-2" for="startDateInput">
+                            Please use yyyy-mm-dd format
+                        </p>
+                        <span class="input-group-text" for="startDateInput">From Date</span>
+                        <input class="form-control" type="string" id="startDateInput" [(ngModel)]="startDate">
+                        <label class="input-group-text" for="endDateInput">To Date</label>
+                        <input class="form-control" type="string" id="endDateInput" [(ngModel)]="endDate">
+                        <button class="btn search" (click)="onFetchByDate()">Search</button>
+                        <button class="btn btn-danger" (click)="onFetchAllData()">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-group" *ngIf="loadedData.length >= 1">
+            <div class="card border-danger mb-3">
+                <mat-accordion [multi]="false" #accordion="matAccordion">
+                    <mat-expansion-panel [disabled]="panel.isDisabled" [expanded]="panel.isExpanded" [hideToggle]="true"
+                        *ngFor="let panel of loadedData | paginate: {itemsPerPage: 10, currentPage: p} | websiteID:filterBy:selectedValue">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <div class="centerIt">
+                                    <p>Website ID - {{panel.WebsiteID}} </p>
+                                </div>
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <p> Widget ID - {{panel.WidgetID}}</p>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="meme">
+                            <p>Clicks - {{ panel.Clicks}} </p>
+                            <p>Date - {{ panel.Date}} </p>
+                            <p>Imprrestions - {{ panel.Imprrestions}} </p>
+                            <p>Revenue - {{ panel.Revenue}} </p>
+                        </div>
+                    </mat-expansion-panel>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+</div>

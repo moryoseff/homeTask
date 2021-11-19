@@ -1,0 +1,64 @@
+.cvsMainDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: inherit;
+}
+
+.selectorDiv {
+  display: flex;
+  margin: 20px;
+}
+
+.p-3.mb-2.bg-info.text-dark {
+  margin: 10px
+}
+
+.input-group-text.span {
+  margin: 5px;
+}
+
+.card-header {
+  margin: 5px;
+  padding: 5px
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+button {
+  border-radius: 15px;
+  margin: 2px;
+}
+
+.p-3.mb-2 {
+  color: red;
+  background-color: #DF9E93;
+  margin: 10px
+}
+
+.input-group-text.span {
+  color: red;
+  background-color: #DF9E93
+}
+
+.input-group-text {
+  background-color: rgb(51, 48, 48);
+  color: white;
+}
+
+.btn.search {
+  background-color: rgb(51, 48, 48);
+  color: white;
+}
+
+p {
+  color: #990011FF
+}
+
+.meme {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
